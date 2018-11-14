@@ -1,0 +1,22 @@
+{
+  "name": "personal-reddit-crawler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thienphanexcalibur/personal-reddit-crawler.git"
+  },
+  "author": "ThienPhan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thienphanexcalibur/personal-reddit-crawler/issues"
+  },
+  "homepage": "https://github.com/thienphanexcalibur/personal-reddit-crawler#readme",
+  "dependencies": {
+    "puppeteer": "^1.10.0"
+  }
+}
