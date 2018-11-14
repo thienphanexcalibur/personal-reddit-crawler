@@ -1,3 +1,4 @@
+const fs = require('fs');
 const ppt = require('puppeteer');
 (async () => {
   const browser = await ppt.launch();
@@ -9,9 +10,13 @@ const ppt = require('puppeteer');
     for(var p in entries) {
       el.push(entries[p].innerText);
     }
-    return el;
+    return el.join('\n');
   });
-  console.log(res);
+  // console.log(res);
+  fs.writeFile('data.txt', res, (err) => {
+   if(err) throw err;
+   console.log('File saved!');
+  })
 
   await browser.close();
 })();
