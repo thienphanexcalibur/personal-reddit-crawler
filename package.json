@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/thienphanexcalibur/personal-reddit-crawler#readme",
   "dependencies": {
+    "moment": "^2.22.2",
     "nodemailer": "^4.6.8",
     "puppeteer": "^1.10.0"
   }

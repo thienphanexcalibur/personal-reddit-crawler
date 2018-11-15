@@ -1,7 +1,13 @@
-'use strict';
+// 'use strict';
 const nodemailer = require('nodemailer');
-const {credentials} = require('config.js');
-nodemailer.createTestAccount((err, account) => {
+const {credentials} = require('./config.js');
+const fs = require('fs');
+const filePath = './data.txt';
+const crawler = require('./index.js');
+const moment = require('moment');
+
+const sendmail = () => {nodemailer.createTestAccount((err, account) => {
+    const content = fs.readFileSync(filePath, 'utf8');
 
     let transporter = nodemailer.createTransport({
         service: 'Gmail',
@@ -13,11 +19,11 @@ nodemailer.createTestAccount((err, account) => {
 
     // setup email data with unicode symbols
     let mailOptions = {
-        from: '"Fred Foo 👻" <foo@example.com>', // sender address
+        from: '"Reddit Crawler" <foo@example.com>', // sender address
         to: 'thien061097@gmail.com', // list of receivers
-        subject: 'Hello ✔', // Subject line
+        subject: `Crawl Galaxy S9 at ${moment().format('LT L')} ✔`, // Subject line
         text: 'Hello world?', // plain text body
-        html: '<b>Hello world?</b>' // html body
+        html: content // html body
     };
 
     // send mail with defined transport object
@@ -25,8 +31,9 @@ nodemailer.createTestAccount((err, account) => {
         if (error) {
             return console.log(error);
         }
-        console.log('Message sent: %s', info.messageId);
-        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+        console.log('Mail Sent!');
 
     });
-});
+})};
+
+crawler(sendmail);
