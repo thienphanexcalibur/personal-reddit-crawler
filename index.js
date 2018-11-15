@@ -1,14 +1,15 @@
 const fs = require('fs');
 const ppt = require('puppeteer');
+const url = 'https://www.reddit.com/r/GalaxyS9/';
 (async () => {
   const browser = await ppt.launch();
   const page = await browser.newPage();
-  await page.goto('https://www.reddit.com/r/GalaxyS9/');
+  await page.goto(url);
   const res = await page.evaluate(() => {
     const entries = document.querySelectorAll("[data-click-id='body']");
     const el = [];
     for(var p in entries) {
-      el.push(entries[p].innerText);
+      entries[p].innerText ? el.push(entries[p].innerText) : null
     }
     return el.join('\n');
   });
