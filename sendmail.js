@@ -12,7 +12,7 @@ const sendmail = () => {nodemailer.createTestAccount((err, account) => {
     let transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-            user: credentials.name,
+            user: credentials.email,
             pass: credentials.password
         }
     });
@@ -20,7 +20,7 @@ const sendmail = () => {nodemailer.createTestAccount((err, account) => {
     // setup email data with unicode symbols
     let mailOptions = {
         from: '"Reddit Crawler" <foo@example.com>', // sender address
-        to: 'thien061097@gmail.com', // list of receivers
+        to: credentials.targetEmail, // receiver
         subject: `Crawl Galaxy S9 at ${moment().format('LT L')} ✔`, // Subject line
         text: 'Hello world?', // plain text body
         html: content // html body
